@@ -1,4 +1,4 @@
-package com.example.d.movie_app.networkking;
+package com.example.d.movie_app.networking;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
