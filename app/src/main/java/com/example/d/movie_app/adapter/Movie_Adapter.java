@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.data_models.Result;
+import com.example.d.movie_app.ui.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Hold
 
     List<Result> movieList;
     Context context;
+
+    public Movie_Adapter(List<Result> results, MainActivity mainActivity) {
+    }
 
 
     @NonNull
