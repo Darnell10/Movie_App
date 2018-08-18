@@ -1,8 +1,8 @@
-package com.example.d.movie_app.ui;
+package com.example.d.movie_app.ui.search;
 
 import com.example.d.movie_app.data_models.Movie_Response;
 
-public interface MainViewInterface {
+public interface SearchViewInterface {
 
     void movieToast(String string);
 

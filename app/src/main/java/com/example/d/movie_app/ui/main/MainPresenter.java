@@ -1,4 +1,4 @@
-package com.example.d.movie_app.ui;
+package com.example.d.movie_app.ui.main;
 
 import android.util.Log;
 
@@ -7,7 +7,6 @@ import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.networking.NetworkingInterface;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -31,7 +30,7 @@ public class MainPresenter implements MainPresenterInterface {
 
     public Observable<Movie_Response> getObservable(){
         return NetworkClient.getRetrofit().create(NetworkingInterface.class)
-                .getMovies(NetworkingInterface.apiKey)
+                .getMovies(NetworkingInterface.apiKey, NetworkingInterface.apiKey)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

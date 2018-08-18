@@ -1,24 +1,31 @@
-package com.example.d.movie_app.ui;
+package com.example.d.movie_app.ui.main;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
 import com.example.d.movie_app.data_models.Movie_Response;
-import com.example.d.movie_app.networking.NetworkingInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainViewInterface  {
+public class MainActivity extends AppCompatActivity implements MainViewInterface {
 
     @BindView(R.id.recyclerview_view)
     RecyclerView movieRv;
+
+    //toolbar
+    @BindView(R.id.activity_toolbar)
+    Toolbar toolbar;
 
     private String TAG = "MainActivity";
 
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
     private void viewSetup(){
         movieRv.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     private void getMovieList(){
@@ -78,4 +86,28 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
         movieToast(string);
     }
+
+    /** toolbar logic below */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+
+   // @Override
+    public boolean onOptionsItemsSelected(MenuItem menuItem){
+
+        int id = menuItem.getItemId();
+        if (id == R.id.search){
+            movieToast(" Someone clicked 'search' ");
+            Intent searchIntent = new Intent(MainActivity.this,SearchActivity.class);
+            startActivity(searchIntent);
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+
 }
