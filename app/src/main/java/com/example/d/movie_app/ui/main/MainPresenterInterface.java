@@ -1,4 +1,4 @@
-package com.example.d.movie_app.ui;
+package com.example.d.movie_app.ui.main;
 
 public interface MainPresenterInterface {
 
