@@ -33,6 +33,7 @@ public class SearchPresenter implements SearchPresenterInterface {
 
         getObservableQuery(searchView)
                 .filter(new Predicate<String>() {
+
                     @Override
                     public boolean test(@NonNull String s) throws Exception {
                         if (s.equals("")){
@@ -49,7 +50,7 @@ public class SearchPresenter implements SearchPresenterInterface {
                         @Override
                         public io.reactivex.Observable<Movie_Response> apply(String s) throws Exception {
                             return NetworkClient.getRetrofit().create(NetworkingInterface.class)
-                                    .getMovies(NetworkingInterface.apiKey,s);
+                                    .getMovies(NetworkingInterface.API_KEY,s);
                         }
                     })
 
