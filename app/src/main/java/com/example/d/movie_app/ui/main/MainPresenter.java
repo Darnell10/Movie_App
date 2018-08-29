@@ -30,7 +30,7 @@ public class MainPresenter implements MainPresenterInterface {
 
     public Observable<Movie_Response> getObservable(){
         return NetworkClient.getRetrofit().create(NetworkingInterface.class)
-                .getMovies(NetworkingInterface.apiKey, NetworkingInterface.apiKey)
+                .getMovies(NetworkingInterface.API_KEY, NetworkingInterface.API_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
