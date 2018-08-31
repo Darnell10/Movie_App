@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
     //toolbar
     @BindView(R.id.activity_toolbar)
-    Toolbar toolbar;
+    android.support.v7.widget.Toolbar toolbar;
 
     private String TAG = "MainActivity";
 
