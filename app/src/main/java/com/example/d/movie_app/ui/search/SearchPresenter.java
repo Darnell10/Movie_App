@@ -9,7 +9,7 @@ import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.networking.NetworkingInterface;
 
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
+import io.reactivex.functions.Predicate;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -45,7 +45,7 @@ public class SearchPresenter implements SearchPresenterInterface {
                 })
 
                     .debounce(2, TimeUnit.SECONDS)
-                    .distinctUnitChange()
+                    .distinctUntilChanged()
                     .switchMap(new Function<String, io.reactivex.Observable<Movie_Response>>() {
                         @Override
                         public io.reactivex.Observable<Movie_Response> apply(String s) throws Exception {
