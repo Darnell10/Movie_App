@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
 import com.example.d.movie_app.data_models.Movie_Response;
+import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.ui.search.SearchActivity;
 
 import butterknife.BindView;
@@ -42,9 +43,14 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        NetworkClient.getRetrofit();
         MVPsetup();
         viewSetup();
         getMovieList();
+
+
+
+
     }
 
 
@@ -75,8 +81,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             Log.d(TAG, movie_response.getResults().get(1).getTitle());
             adapter = new Movie_Adapter(movie_response.getResults(), MainActivity.this);
             movieRv.setAdapter(adapter);
+            Log.d(" MOVIE DISPLAY ", "MOVIES SHOWING" );
         } else {
             Log.d(TAG, " Movies are Null");
+
         }
 
     }

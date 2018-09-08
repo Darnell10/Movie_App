@@ -16,7 +16,7 @@ public interface NetworkingInterface {
 //    Observable<Movie_Response> getMovies(String apiKey,  @Query(apiKey) String api_key);
 
     @GET("discover/movie")
-    Observable<Movie_Response> getMovies(@Query(API_KEY) String apiKey, String query);
+    Observable<Movie_Response> getMovies(@Query(API_KEY) String apiKey, @Query("sort_by") String query);
 
 
     @GET("search/movie")
