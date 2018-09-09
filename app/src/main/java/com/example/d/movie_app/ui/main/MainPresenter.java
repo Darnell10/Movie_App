@@ -20,6 +20,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainPresenter implements MainPresenterInterface {
 
+    NetworkClient networkClient;
+
     MainViewInterface mainViewInterface;
 
     private String TAG = "MainPresenter";
