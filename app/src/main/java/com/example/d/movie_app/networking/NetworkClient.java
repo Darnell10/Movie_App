@@ -22,7 +22,7 @@ public class NetworkClient {
             OkHttpClient okHttpClient = builder.build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(NetworkingInterface.API_KEY)
+                    .baseUrl(NetworkingInterface.BASEURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)

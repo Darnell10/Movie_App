@@ -8,6 +8,7 @@ import com.example.d.movie_app.networking.NetworkingInterface;
 
 import org.reactivestreams.Subscriber;
 
+import java.net.NetworkInterface;
 import java.util.List;
 
 import io.reactivex.Observable;
