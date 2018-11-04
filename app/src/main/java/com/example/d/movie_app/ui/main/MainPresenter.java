@@ -13,6 +13,10 @@ import org.reactivestreams.Subscriber;
 import java.net.NetworkInterface;
 import java.util.List;
 
+import org.reactivestreams.Subscriber;
+
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -44,8 +48,13 @@ public class MainPresenter implements MainPresenterInterface {
 
     public Observable<Movie_Response> getObservable(){
         return NetworkClient.getRetrofit()
+<<<<<<< HEAD:app/src/main/java/com/example/d/movie_app/ui/MainPresenter.java
                 .create(NetworkingInterface.class)
                 .getMovies(NetworkingInterface.API_KEY, "title")
+=======
+                .create(NetworkClient.class)
+                .getMovies(NetworkingInterface.API_KEY)
+>>>>>>> e96c7f076dd8ca61a9facad77b591d700187c219:app/src/main/java/com/example/d/movie_app/ui/main/MainPresenter.java
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
