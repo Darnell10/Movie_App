@@ -11,6 +11,7 @@ import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
 import com.example.d.movie_app.data_models.Movie_Response;
 import com.example.d.movie_app.networking.NetworkingInterface;
+import com.example.d.movie_app.ui.main.MainPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.data_models.Result;
 import com.example.d.movie_app.ui.MainActivity;
+//import com.example.d.movie_app.ui.main.MainActivity;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Holder> {
@@ -22,6 +24,8 @@ public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Hold
     Context context;
 
     public Movie_Adapter(List<Result> results, MainActivity mainActivity) {
+        this.movieList = results;
+        this.context= mainActivity;
     }
 
 
@@ -41,8 +45,6 @@ public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Hold
         Result movieResult = movieList.get(position);
         holder.onBind(movieResult);
 
-//                .load("https://image.themoviedb.org/3/movie/550"+movieList
-//                        .get(position).getPosterPath()).into(holder.movieImage);
 
     }
 
@@ -70,8 +72,9 @@ public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Hold
         }
 
         public void onBind(Result movieResult) {
+            String urlPath = "https://image.tmdb.org/t/p/w500" + movieResult.getPosterPath();
             Picasso.with(itemView.getContext())
-                    .load(movieResult.getPosterPath())
+                    .load(urlPath)
                     .into(movieImage);
         }
     }

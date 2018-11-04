@@ -1,63 +1,81 @@
-package com.example.d.movie_app.ui;
+package com.example.d.movie_app.ui.main;
 
 import android.util.Log;
 
 import com.example.d.movie_app.data_models.Movie_Response;
 import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.networking.NetworkingInterface;
+import com.example.d.movie_app.ui.MainPresenterInterface;
+import com.example.d.movie_app.ui.MainViewInterface;
+
+import org.reactivestreams.Subscriber;
+
+import java.net.NetworkInterface;
+import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainPresenter implements MainPresenterInterface {
 
-  //  private final String myApiKey ="05064d0ea0a59b3c717097a5d3851776 ";
+    NetworkClient networkClient;
 
-    MainViewInterface mvi;
+    MainViewInterface mainViewInterface;
 
-    private String TAG = "Main Presenter";
+    private String TAG = "MainPresenter";
 
-    public MainPresenter(MainViewInterface mvi){
-        this.mvi = mvi;
+    public MainPresenter(MainViewInterface mainViewInterface) {
+        this.mainViewInterface = mainViewInterface;
     }
+
 
     @Override
     public void getMovies() {
 
+        getObservable().subscribeWith(getObserver());
+
     }
 
+
     public Observable<Movie_Response> getObservable(){
-        return NetworkClient.getRetrofit().create(NetworkingInterface.class)
-                .getMovies(NetworkingInterface.apiKey)
+        return NetworkClient.getRetrofit()
+                .create(NetworkingInterface.class)
+                .getMovies(NetworkingInterface.API_KEY, "title")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
+
     }
+
+
 
     public DisposableObserver<Movie_Response> getObserver(){
         return new DisposableObserver<Movie_Response>() {
 
             @Override
-            public void onNext(Movie_Response movie_response) {
+            public void onNext( @NonNull Movie_Response movie_response) {
                 Log.d(TAG,"OnNext" + movie_response.getTotalResults());
-                mvi.movieDisplay(movie_response);
+                mainViewInterface.movieDisplay(movie_response);
 
             }
 
             @Override
-            public void onError(Throwable e) {
-
-                Log.e(TAG, "Error" + e);
+            public void onError( @NonNull Throwable e) {
+                Log.d(TAG,"Error" + e);
                 e.printStackTrace();
-                mvi.movieError("Error getting movie data");
+                //mainViewInterface.movieDisplay();
+
             }
 
             @Override
             public void onComplete() {
 
-                Log.d(TAG, "Completed");
+                Log.d(TAG,"Done");
+
             }
         };
     }
