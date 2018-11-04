@@ -11,12 +11,9 @@ import android.widget.TextView;
 
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.data_models.Result;
-<<<<<<< HEAD
-import com.example.d.movie_app.ui.MainActivity;
-//import com.example.d.movie_app.ui.main.MainActivity;
-=======
+
 import com.example.d.movie_app.ui.main.MainActivity;
->>>>>>> e96c7f076dd8ca61a9facad77b591d700187c219
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,18 +21,14 @@ import java.util.List;
 
 public class Movie_Adapter extends RecyclerView.Adapter<Movie_Adapter.Movie_Holder> {
 
-    ArrayList<Result> movieList;
+    List<Result> movieList;
     Context context;
 
     public Movie_Adapter(List<Result> results, MainActivity mainActivity) {
-<<<<<<< HEAD
+
         this.movieList = results;
         this.context= mainActivity;
-=======
-        this.movieList = movieList;
-        this.context= context;
 
->>>>>>> e96c7f076dd8ca61a9facad77b591d700187c219
     }
 
 

@@ -13,13 +13,9 @@ import android.widget.Toast;
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
 import com.example.d.movie_app.data_models.Movie_Response;
-<<<<<<< HEAD:app/src/main/java/com/example/d/movie_app/ui/MainActivity.java
-import com.example.d.movie_app.networking.NetworkingInterface;
-import com.example.d.movie_app.ui.main.MainPresenter;
-=======
+
 import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.ui.search.SearchActivity;
->>>>>>> e96c7f076dd8ca61a9facad77b591d700187c219:app/src/main/java/com/example/d/movie_app/ui/main/MainActivity.java
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,39 +50,35 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         getMovieList();
 
 
-
-
     }
 
 
-
-
-    private void MVPsetup(){
+    private void MVPsetup() {
         mainPresenter = new MainPresenter(this);
     }
 
-    private void viewSetup(){
+    private void viewSetup() {
         movieRv.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
-    private void getMovieList(){
+    private void getMovieList() {
         mainPresenter.getMovies();
     }
 
 
     @Override
     public void movieToast(String string) {
-        Toast.makeText(MainActivity.this, string,Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void movieDisplay(Movie_Response movie_response) {
-        if (movie_response != null){
+        if (movie_response != null) {
             Log.d(TAG, movie_response.getResults().get(1).getTitle());
             adapter = new Movie_Adapter(movie_response.getResults(), MainActivity.this);
             movieRv.setAdapter(adapter);
-            Log.d(" MOVIE DISPLAY ", "MOVIES SHOWING" );
+            Log.d(" MOVIE DISPLAY ", "MOVIES SHOWING");
         } else {
             Log.d(TAG, " Movies are Null");
 
@@ -100,23 +92,25 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         movieToast(string);
     }
 
-    /** toolbar logic below */
+    /**
+     * toolbar logic below
+     */
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
 
     }
 
 
     //@Override
-    public boolean onOptionsItemsSelected(MenuItem menuItem){
+    public boolean onOptionsItemsSelected(MenuItem menuItem) {
 
         int id = menuItem.getItemId();
-        if (id == R.id.search){
+        if (id == R.id.search) {
             movieToast(" Someone clicked 'search' ");
-            Intent searchIntent = new Intent(MainActivity.this,SearchActivity.class);
+            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(searchIntent);
         }
         return super.onOptionsItemSelected(menuItem);
