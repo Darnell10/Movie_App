@@ -13,8 +13,13 @@ import android.widget.Toast;
 import com.example.d.movie_app.R;
 import com.example.d.movie_app.adapter.Movie_Adapter;
 import com.example.d.movie_app.data_models.Movie_Response;
+<<<<<<< HEAD:app/src/main/java/com/example/d/movie_app/ui/MainActivity.java
+import com.example.d.movie_app.networking.NetworkingInterface;
+import com.example.d.movie_app.ui.main.MainPresenter;
+=======
 import com.example.d.movie_app.networking.NetworkClient;
 import com.example.d.movie_app.ui.search.SearchActivity;
+>>>>>>> e96c7f076dd8ca61a9facad77b591d700187c219:app/src/main/java/com/example/d/movie_app/ui/main/MainActivity.java
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
